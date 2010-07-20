@@ -25,6 +25,22 @@ get "/" do
   erb :index
 end
 
+# options "/search" do
+#   puts params.inspect
+#   params[:site_name] = params[:q] if params[:site_name].nil?
+#   result = Service.find_by_site_name(params[:site_name])
+#   puts result.inspect
+#   erb :search, :locals => {:result => result}
+# end
+
+post "/" do
+  erb :index
+end
+
+get "/" do
+  erb :index
+end
+
 get "/services" do
   
 end
@@ -32,11 +48,14 @@ end
 get "/search" do
   result = Service.find_by_site_name(params[:site_name])
   erb :search, :locals => {:result => result}
+  result.to_json
 end
 
 post "/search" do
+  puts params.inspect
   params[:site_name] = params[:q] if params[:site_name].nil?
   result = Service.find_by_site_name(params[:site_name])
+  puts result.inspect
   erb :search, :locals => {:result => result}
 end
 
