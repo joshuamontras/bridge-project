@@ -1,0 +1,119 @@
+wget http://sysoev.ru/nginx/nginx-0.7.63.tar.gz
+
+[root@Bridge1 nginx-0.7.63]# ./configure --sbin-path=/usr/local/sbin --with-http_ssl_module
+checking for OS
+ + Linux 2.6.34.1-rscloud x86_64
+checking for C compiler ... found
+ + using GNU C compiler
+ + gcc version: 4.1.2 20080704 (Red Hat 4.1.2-48)
+checking for gcc -pipe switch ... found
+checking for gcc variadic macros ... found
+checking for C99 variadic macros ... found
+checking for unistd.h ... found
+checking for inttypes.h ... found
+checking for limits.h ... found
+checking for sys/filio.h ... not found
+checking for sys/param.h ... found
+checking for sys/mount.h ... found
+checking for sys/statvfs.h ... found
+checking for crypt.h ... found
+checking for Linux specific features
+checking for epoll ... found
+checking for sendfile() ... found
+checking for sendfile64() ... found
+checking for sys/prctl.h ... found
+checking for prctl(PR_SET_DUMPABLE) ... found
+checking for sched_setaffinity() ... found
+checking for crypt_r() ... found
+checking for sys/vfs.h ... found
+checking for nobody group ... found
+checking for poll() ... found
+checking for /dev/poll ... not found
+checking for kqueue ... not found
+checking for crypt() ... not found
+checking for crypt() in libcrypt ... found
+checking for O_DIRECT ... found
+checking for F_NOCACHE ... not found
+checking for directio() ... not found
+checking for statfs() ... found
+checking for statvfs() ... found
+checking for dlopen() ... not found
+checking for dlopen() in libdl ... found
+checking for sched_yield() ... found
+checking for PCRE library ... found
+checking for OpenSSL library ... found
+checking for zlib library ... found
+creating objs/Makefile
+checking for int size ... 4 bytes
+checking for long size ... 8 bytes
+checking for long long size ... 8 bytes
+checking for void * size ... 8 bytes
+checking for uint64_t ... found
+checking for sig_atomic_t ... found
+checking for sig_atomic_t size ... 4 bytes
+checking for socklen_t ... found
+checking for in_addr_t ... found
+checking for in_port_t ... found
+checking for rlim_t ... found
+checking for uintptr_t ... uintptr_t found
+checking for system endianess ... little endianess
+checking for size_t size ... 8 bytes
+checking for off_t size ... 8 bytes
+checking for time_t size ... 8 bytes
+checking for setproctitle() ... not found
+checking for pread() ... found
+checking for pwrite() ... found
+checking for strerror_r() ... found but is not working
+checking for gnu style strerror_r() ... found
+checking for localtime_r() ... found
+checking for posix_memalign() ... found
+checking for memalign() ... found
+checking for mmap(MAP_ANON|MAP_SHARED) ... found
+checking for mmap("/dev/zero", MAP_SHARED) ... found
+checking for System V shared memory ... found
+checking for struct msghdr.msg_control ... found
+checking for ioctl(FIONBIO) ... found
+checking for struct tm.tm_gmtoff ... found
+checking for struct dirent.d_namlen ... not found
+checking for struct dirent.d_type ... found
+
+Configuration summary
+  + using system PCRE library
+  + using system OpenSSL library
+  + md5: using OpenSSL library
+  + sha1 library is not used
+  + using system zlib library
+
+  nginx path prefix: "/usr/local/nginx"
+  nginx binary file: "/usr/local/sbin"
+  nginx configuration prefix: "/usr/local/nginx/conf"
+  nginx configuration file: "/usr/local/nginx/conf/nginx.conf"
+  nginx pid file: "/usr/local/nginx/logs/nginx.pid"
+  nginx error log file: "/usr/local/nginx/logs/error.log"
+  nginx http access log file: "/usr/local/nginx/logs/access.log"
+  nginx http client request body temporary files: "client_body_temp"
+  nginx http proxy temporary files: "proxy_temp"
+  nginx http fastcgi temporary files: "fastcgi_temp"
+
+
+  make -f objs/Makefile install
+  make[1]: Entering directory `/root/sources/nginx-0.7.63'
+  test -d '/usr/local/nginx' || mkdir -p '/usr/local/nginx'
+  test -d '/usr/local' 		|| mkdir -p '/usr/local'
+  test ! -f '/usr/local/sbin' 		|| mv '/usr/local/sbin' 			'/usr/local/sbin.old'
+  cp objs/nginx '/usr/local/sbin'
+  test -d '/usr/local/nginx/conf' 		|| mkdir -p '/usr/local/nginx/conf'
+  cp conf/koi-win '/usr/local/nginx/conf'
+  cp conf/koi-utf '/usr/local/nginx/conf'
+  cp conf/win-utf '/usr/local/nginx/conf'
+  test -f '/usr/local/nginx/conf/mime.types' 		|| cp conf/mime.types '/usr/local/nginx/conf'
+  cp conf/mime.types '/usr/local/nginx/conf/mime.types.default'
+  test -f '/usr/local/nginx/conf/fastcgi_params' 		|| cp conf/fastcgi_params '/usr/local/nginx/conf'
+  cp conf/fastcgi_params 		'/usr/local/nginx/conf/fastcgi_params.default'
+  test -f '/usr/local/nginx/conf/nginx.conf' 		|| cp conf/nginx.conf '/usr/local/nginx/conf/nginx.conf'
+  cp conf/nginx.conf '/usr/local/nginx/conf/nginx.conf.default'
+  test -d '/usr/local/nginx/logs' 		|| mkdir -p '/usr/local/nginx/logs'
+  test -d '/usr/local/nginx/logs' || 		mkdir -p '/usr/local/nginx/logs'
+  test -d '/usr/local/nginx/html' 		|| cp -r html '/usr/local/nginx'
+  test -d '/usr/local/nginx/logs' || 		mkdir -p '/usr/local/nginx/logs'
+  make[1]: Leaving directory `/root/sources/nginx-0.7.63'
