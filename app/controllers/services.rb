@@ -55,5 +55,43 @@ Bridge.controllers :services do
     render :"base/search_result", :layout => !request.xhr?
   end
   
+  post :search, :map => "/find" do
+    service_type = params[:service_type]
+    name = params[:name]
+    quadrant = params[:quadrant]
+    zip = params[:zip]
+    @query = []
+    if service_type
+      @query << service_type.downcase
+    end
+    if name
+      @query << name.downcase
+    end
+    if quadrant 
+      @query << quadrant
+    end
+    if zip
+      @query << zip
+    end
+    
+    paginate!
+    
+    @services = Service.find(@query.flatten).all
+    puts @services
+    @total_pages = @services.length/@per_page
+    #need one more if there is a remainder
+    @total_pages +=1 if @services.length % @per_page
+
+    @services.each {|s| s.rank_search_array @query}
+    @services.sort! {|a,b|b.rank<=>a.rank}
+    @services = @services.slice!(@start..@end)
+    
+    if request.xhr?
+      return result.to_json
+    end
+    render :"base/search_result", :layout => !request.xhr?
+  end
+  
+  
   
 end

@@ -43,10 +43,19 @@ class Service
     @search_relevance = 1
   end
   scope :search,  lambda { |search_term| where(:search_terms => search_term.gsub(PUNCTUATION, "").downcase.split.uniq) }
-  
+  scope :find,    lambda { |search_term| where(:search_terms => search_term) }
+  # want to do something more like http://www.mongodb.org/display/DOCS/Tutorial#Tutorial-LimitingtheResultSetvia{{limit%28%29}}
+
   def rank_search(search_term)
     @rank = 0    
     search_array = search_term.gsub(PUNCTUATION, "").downcase.split.uniq
+    search_rank_array =  search_array & search_terms.uniq
+    @rank = search_rank_array.length
+  end
+  
+  def rank_search_array(search_term)
+    @rank = 0    
+    search_array = search_term.each{|search_term|search_term.gsub(PUNCTUATION, "").downcase.split.uniq}
     search_rank_array =  search_array & search_terms.uniq
     @rank = search_rank_array.length
   end
