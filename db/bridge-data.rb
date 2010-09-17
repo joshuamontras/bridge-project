@@ -4,7 +4,7 @@ require 'restclient'
 require 'json'
 require 'hashie'
 
-filename = 'bridge-data-9-9-2010.csv'
+filename = 'bridge_data_updated.csv'
 rows = []
 i=0
 url, rows, i = "http://maps.google.com/maps/api/geocode/json?", [], 0

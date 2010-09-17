@@ -1,39 +1,44 @@
 <div id="contentMain" class="limited">
 	<div class="hr"><hr /></div>
     <div id="index-body" class="middle">
-      <h1>Find Services</h1>
+      <h1>Explore Services</h1>
       <div id="moduleCM22">
-    	  <form action="/find" method="post" accept-charset="utf-8">
+        <div id="index-search">
+          <div class="group">
+            
+            <form action="/services/advanced_search" method="get" accept-charset="utf-8">
 
-    		<ul>
-    		  <li class="name-search">Search by name:&nbsp;<input type="text" name="name"></input></li> 
-    		  <li>Filter by Service Type</li>
-      		<ul>
-      		  <li class="service-search" style="list-style-type:none;"><input type="checkbox" name="service_type" value="food services      ">Food Services          </input></li>
-    			  <li class="service-search" style="list-style-type:none;"><input type="checkbox" name="service_type" value="counseling services">Counseling Services    </input></li>
-            <li class="service-search" style="list-style-type:none;"><input type="checkbox" name="service_type" value="housing services   ">Housing Services       </input></li>
-            <li class="service-search" style="list-style-type:none;"><input type="checkbox" name="service_type" value="community garden   ">Community Garden       </input></li>
-            <li class="service-search" style="list-style-type:none;"><input type="checkbox" name="service_type" value="legal services     ">Legal Services         </input></li>
-      			<li class="service-search" style="list-style-type:none;"><input type="checkbox" name="service_type" value="library            ">Library                </input></li>
-            <li class="service-search" style="list-style-type:none;"><input type="checkbox" name="service_type" value="meal programs      ">Meal Programs          </input></li>
-            <li class="service-search" style="list-style-type:none;"><input type="checkbox" name="service_type" value="senior services    ">Senior Services        </input></li>
-            <li class="service-search" style="list-style-type:none;"><input type="checkbox" name="service_type" value="teen services      ">Teen Services          </input></li>
-      		</ul>
-    			<li>Filter by Quadrant</li>
-    			<ul>
-    			  <li class="quadrant-search" style="list-style-type:none;"><input type="checkbox" name="quadrant" value="nw">NW</input></li>
-    			  <li class="quadrant-search" style="list-style-type:none;"><input type="checkbox" name="quadrant" value="ne">NE</input></li>
-            <li class="quadrant-search" style="list-style-type:none;"><input type="checkbox" name="quadrant" value="sw">SW</input></li>
-            <li class="quadrant-search" style="list-style-type:none;"><input type="checkbox" name="quadrant" value="se">SE</input></li>
-          </ul>
+          		<ul style="list-style-type:none;">
+          		  <li class="name-search" style="padding-bottom: 4px;">Search by name:&nbsp;<input type="text" name="service[name]" value=""/></li> 
+          		  <li>Filter by Service Type</li>
+            		<ul style="list-style-type:none;">
+            		  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="food services"/>Food Services          </label></li>
+          			  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="counseling services"/>Counseling Services    </label></li>
+                  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="housing services"/>Housing Services       </label></li>
+                  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="community garden"/>Community Garden       </label></li>
+                  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="legal services"/>Legal Services         </label></li>
+            			<li class="service-search"><Label><input type="checkbox" name="service[services][]" value="library"/>Library                </label></li>
+                  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="meal programs"/>Meal Programs          </label></li>
+                  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="senior services"/>Senior Services        </label></li>
+                  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="teen services"/>Teen Services          </label></li>
+            		</ul>
+          			<li>Filter by Quadrant</li>
+          			<ul style="list-style-type:none;">
+          			  <li class="quadrant-search"><label><input type="checkbox" name="service[quadrant][]" value="NW"/>NW</label></li>
+          			  <li class="quadrant-search"><label><input type="checkbox" name="service[quadrant][]" value="NE"/>NE</label></li>
+                  <li class="quadrant-search"><label><input type="checkbox" name="service[quadrant][]" value="SW"/>SW</label></li>
+                  <li class="quadrant-search"><label><input type="checkbox" name="service[quadrant][]" value="SE"/>SE</label></li>
+                </ul>
 
-    			<li class="last">Filter Zip Code:&nbsp;<input type="text" length="5" size="5" name="zip"></input></li>
-    			<br />
-          <div class="search-button">
-             <span class="ds"><span class="lsbb"><input type="submit" class="lsb" value="Search Services" name="btnG" style="vertical-align: middle;"></span></span>  
-           </div>
-    			</form>
-    			</ul>
+          			<li class="last">Filter Zip Code:&nbsp;<input type="text" length="5" size="5" name="service[zip]" value="" /></li>
+          			<br />
+                <div class="search-button">
+                   <span class="ds"><span class="lsbb"><input type="submit" class="lsb" value="Search Services" name="btnG" style="vertical-align: middle;"></span></span>  
+                 </div>
+            </form>
+            
+          </div>
+        </div>
       </div>
     </div>
 </div>

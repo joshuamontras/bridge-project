@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'csv'
+require 'fasterCSV'
 require 'json'
 # require 'mongomapper'
 # require 'hashie'
@@ -25,11 +25,13 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
 filename = 'outfile.csv'
 rows = []
 i=0
-CSV.foreach(filename, {:headers=> true})  do |row|
+csv = FasterCSV.foreach(filename, {:headers=> true})  do |row|
   h = {}
   row.each do |key,value|
     h[key.to_sym] = value
   end
+  h[:primary_service].downcase! unless h[:primary_service].nil?
+  h[:secondary_service].downcase!  unless h[:secondary_service].nil?
   s = Service.create(h)
   puts s.inspect
   s.save

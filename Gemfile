@@ -15,4 +15,9 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 
 
 # Padrino
-gem 'padrino', "0.9.14"
+gem 'padrino', "0.9.15"
+
+gem "rest-client"
+gem "hashie"
+gem "json"
+gem 'awesome_print', :require => 'ap'

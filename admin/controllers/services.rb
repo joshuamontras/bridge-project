@@ -31,10 +31,32 @@ Admin.controllers :services do
     render 'services/index'
   end
 
-
+  get :type do
+    @type = params[:service].downcase
+    @services = Service.where(:services => @type)      
+    
+    render 'services/type'
+  end
+  
   get :new do
     @service = Service.new
     render 'services/new'
+  end
+
+  get :pending do
+    @services = Service.where(:status => "pending")
+    render 'services/pending'
+  end
+
+  post :activate, :with => :id do
+    @service = Service.find(params[:id])
+    @service.status = "active"    
+    if @service.save
+      flash[:notice] = 'Service was successfully accepted.'
+      redirect url(:services, :index)
+    else
+      render 'services/edit'
+    end
   end
 
   post :create do
