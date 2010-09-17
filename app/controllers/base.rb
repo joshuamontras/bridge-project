@@ -11,4 +11,8 @@ Bridge.controllers :base do
     render "base/about"
   end
   
+  get :site_name, :map => '/services/site_name' do
+    render "services/site_name"
+  end
+  
 end

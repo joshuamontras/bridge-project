@@ -12,7 +12,7 @@ Bridge.controllers :services do
     @request_string =  request.query_string
     query_string_parts = []
     params[:service].each do |k,v|
-      value = v.is_a?(Array) ? v = v.join(", ") : v
+      value = v.is_a?(Array) ? v = v.map(&:downcase).join(", ") : v
       query_string_parts << "#{k.to_s.capitalize}: #{value}"
     end
     @query_string = query_string_parts.join(", ")
@@ -38,6 +38,11 @@ Bridge.controllers :services do
   get :service_types do
     service_types = Service.service_types
     erb :"services/types", :locals => {:service_types => service_types}    
+  end
+  
+  get :site_name do
+    service_types = Service.site_name
+    erb :"services/site_name", :locals => {:service_types => service_types}    
   end
 
   get :list, :map => "/list_type/?" do
