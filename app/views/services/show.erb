@@ -22,7 +22,7 @@
       <% end %>
   
       <% if service.website? %>
-        <div class="website"><em>Website:</em> <%= service.website %></div>
+        <div class="website"><em>Website:</em> <a target="new" href="<%= service.website %>"><%= service.website %></a></div>
       <% end %>
   
       <% if service.primary_service? %>
